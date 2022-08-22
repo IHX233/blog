@@ -38,149 +38,202 @@
         </div>
         <div class="menu-sign" style="display: none;">
             <div class="sign-content">
-                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <div class="layui-tab layui-bg-gray layui-tab-brief" lay-filter="docDemoTabBrief">
                     <ul class="layui-tab-title">
-                        <li class="layui-this">网站设置</li>
-                        <li>用户管理</li>
-                        <li>权限分配</li>
-                        <li>商品管理</li>
-                        <li>订单管理</li>
+                        <li class="layui-this">登陆</li>
+                        <li>注册</li>
                     </ul>
-                    <div class="layui-tab-content"></div>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="name" required lay-verify="name" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入用户名</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="password" required lay-verify="pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-tab-item">
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">用户名</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="name" required lay-verify="name" placeholder="用户名" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入用户名</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" id="pwd" name="password" required lay-verify="pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">再次输入密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="password1" required lay-verify="pwd2" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="regist">注册</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="sign-center-close">x</div>
+                <div class="sign-center-close ">x</div>
             </div>
         </div>
     </div>
     <!--头像-->
     <div id="blogger">
-        <div class="pic">
-            <a href=""></a>
+        <div class="pic ">
+            <a href=" "></a>
         </div>
-        <div class="name">This is ihx</div>
+        <div class="name ">This is ihx</div>
     </div>
     <!--盒子装饰-->
     <div id="decorate">
-        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 100 L50 50 L0 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 100 L50 50 L100 33.3" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 100 L50 50 L0 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 100 L50 50 L100 66.6" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, .97)"></path>
-            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, .97)"></path>
+        <svg id="header-decor " class="decor bottom " xmlns="http://www.w3.org/2000/svg " version="1.1 " viewBox="0 0 100 100 " preserveAspectRatio="none ">
+            <path class="large left " d="M0 0 L50 50 L0 100 " fill="rgba(255,255,255, .1) "></path>
+            <path class="large right " d="M100 0 L50 50 L100 100 " fill="rgba(255,255,255, .1) "></path>
+            <path class="medium left " d="M0 100 L50 50 L0 33.3 " fill="rgba(255,255,255, .3) "></path>
+            <path class="medium right " d="M100 100 L50 50 L100 33.3 " fill="rgba(255,255,255, .3) "></path>
+            <path class="small left " d="M0 100 L50 50 L0 66.6 " fill="rgba(255,255,255, .5) "></path>
+            <path class="small right " d="M100 100 L50 50 L100 66.6 " fill="rgba(255,255,255, .5) "></path>
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9 " fill="rgba(255,255,255, .97) "></path>
+            <path d="M48 52 L50 49 L52 52 L48 52 " fill="rgba(255,255,255, .97) "></path>
         </svg>
     </div>
     <!--内容-->
     <div id="content">
-        <div class="content-main">
-            <ul class="content-main-left">
+        <div class="content-main ">
+            <ul class="content-main-left ">
                 <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
+                    <div class="pic " style="background:url(/images/article/1.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/1.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
                     </div>
-                    <div class="article">
+                    <div class="article ">
                         <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
                         </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
                         </div>
                     </div>
                 </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
+                <li class="right ">
+                    <div class="pic " style="background:url(/images/article/2.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/2.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
                     </div>
-                    <div class="article">
+                    <div class="article ">
                         <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
                         </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
-                    </div>
-                    <div class="article">
-                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
-                        </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
                         </div>
                     </div>
                 </li>
                 <li>
-                    <div class="pic" style="background:url(/images/article/1.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/1.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
+                    <div class="pic " style="background:url(/images/article/1.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/1.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
                     </div>
-                    <div class="article">
+                    <div class="article ">
                         <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
                         </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
                         </div>
                     </div>
                 </li>
-                <li class="right">
-                    <div class="pic" style="background:url(/images/article/2.jpg) no-repeat center top/cover;"></div>
-                    <div class="title" style="background:url(/images/article/2.jpg) center top/100%;">
-                        <div class="t-bg"></div>
-                        <p class="t t-1"><a href="">我哭了你们呢我哭了你们呢</a></p>
-                        <p class="t t-2">发布时间：<span>2019/03/22</span></p>
-                        <p class="t t-3">浏览量：<span>8000</span></p>
+                <li class="right ">
+                    <div class="pic " style="background:url(/images/article/2.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/2.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
                     </div>
-                    <div class="article">
+                    <div class="article ">
                         <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
-                        <div class="more">
-                            <a href="">阅读全部</a>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
                         </div>
-                        <div class="comment">
-                            <a href=""><span>80</span>条评论</a>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="pic " style="background:url(/images/article/1.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/1.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
+                    </div>
+                    <div class="article ">
+                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
+                        </div>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="right ">
+                    <div class="pic " style="background:url(/images/article/2.jpg) no-repeat center top/cover; "></div>
+                    <div class="title " style="background:url(/images/article/2.jpg) center top/100%; ">
+                        <div class="t-bg "></div>
+                        <p class="t t-1 "><a href=" ">我哭了你们呢我哭了你们呢</a></p>
+                        <p class="t t-2 ">发布时间：<span>2019/03/22</span></p>
+                        <p class="t t-3 ">浏览量：<span>8000</span></p>
+                    </div>
+                    <div class="article ">
+                        <p>确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命确实讨厌去写所谓的年终总结，在公司已经被动的想领导上交一个总结，自己就懒得去总结，不然，我觉得脑子里应该会编写出八九不离十的内容，所以正经八儿的事情略了，瞎说一下。 年初的人事调动是个人最不能接受的事情，但不接受也得接受，老板一句“这是命令...</p>
+                        <div class="more ">
+                            <a href=" ">阅读全部</a>
+                        </div>
+                        <div class="comment ">
+                            <a href=" "><span>80</span>条评论</a>
                         </div>
                     </div>
                 </li>
@@ -189,15 +242,15 @@
     </div>
     <!--盒子装饰-->
     <div id="decorate2">
-        <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="large left" d="M0 0 L50 50 L0 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="large right" d="M100 0 L50 50 L100 100" fill="rgba(255,255,255, .1)"></path>
-            <path class="medium left" d="M0 0 L50 50 L0 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="medium right" d="M100 0 L50 50 L100 66.6" fill="rgba(255,255,255, .3)"></path>
-            <path class="small left" d="M0 0 L50 50 L0 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path class="small right" d="M100 0 L50 50 L100 33.3" fill="rgba(255,255,255, .5)"></path>
-            <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, .97)"></path>
-            <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, .97)"></path>
+        <svg id="footer-decor " class="decor top " xmlns="http://www.w3.org/2000/svg " version="1.1 " viewBox="0 0 100 100 " preserveAspectRatio="none ">
+            <path class="large left " d="M0 0 L50 50 L0 100 " fill="rgba(255,255,255, .1) "></path>
+            <path class="large right " d="M100 0 L50 50 L100 100 " fill="rgba(255,255,255, .1) "></path>
+            <path class="medium left " d="M0 0 L50 50 L0 66.6 " fill="rgba(255,255,255, .3) "></path>
+            <path class="medium right " d="M100 0 L50 50 L100 66.6 " fill="rgba(255,255,255, .3) "></path>
+            <path class="small left " d="M0 0 L50 50 L0 33.3 " fill="rgba(255,255,255, .5) "></path>
+            <path class="small right " d="M100 0 L50 50 L100 33.3 " fill="rgba(255,255,255, .5) "></path>
+            <path d="M0 0 L50 50 L100 0 L0 0 " fill="rgba(255,255,255, .97) "></path>
+            <path d="M48 48 L50 51 L52 48 L48 48 " fill="rgba(255,255,255, .97) "></path>
         </svg>
     </div>
     <!--尾部-->
@@ -205,18 +258,56 @@
 
     </div>
 
-    <script src="/js/index.js"></script>
+    <script src="/js/index.js "></script>
     <script>
         (function() {
-            var $menu = $("#menu"),
-                $menuSign = $menu.find(".menu-sign"),
-                $close = $menu.find(".sign-center-close");
+            var $menu = $("#menu "),
+                $menuSign = $menu.find(".menu-sign "),
+                $close = $menu.find(".sign-center-close ");
 
 
-            $close.on("click", function() {
+            $close.on("click ", function() {
                 $menuSign.fadeOut(100);
             });
         })();
+        //选项卡依赖element模块，否则无法进行功能性操作
+        layui.use(['element', 'form'], function() {
+            var form = layui.form
+            form.verify({
+                "name": function(value) {
+                    if (!/^[\w\u4e00-\u9fa5]{2,10}$/.test(value)) {
+                        return "用户名格式不正确!";
+                    }
+                },
+                "pwd": function(value) {
+                    if (!/^[\da-z,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value)) {
+                        return "密码格式不正确";
+                    }
+                },
+                "pwd2": function(value) {
+                    var pwdvalue = $("#pwd").val();
+                    if (value !== pwdvalue) {
+                        console.log('1', pwdvalue, '2', value)
+                        return "两次输入密码不一致"
+                    }
+                }
+            });
+            //监听提交
+            form.on('submit(regist)', function(data) {
+                console.log(data.field)
+                $.ajax({
+                    method: "POST",
+                    url: "/regist",
+                    data: data.field,
+                    success: function() {
+                        console.log('注册ajax触发')
+                    }
+                })
+
+                //取消表单的默认提交
+                return false;
+            });
+        })
     </script>
 </body>
 

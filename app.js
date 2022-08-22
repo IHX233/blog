@@ -27,5 +27,7 @@ app.set('view engine', 'ejs')
 //路由监听
 app.use('/', require('./routers/index'))
 app.use('/favicon', (req, res) => {
-    res.sendFile('/favicon.ico')
-})
+        res.sendFile('/favicon.ico')
+    })
+    //注册路由
+app.post('/regist', require('./routers/regist'))
