@@ -33,5 +33,8 @@ app.use('/favicon', (req, res) => {
 //注册路由
 app.post('/regist', require('./routers/regist'))
 
+//登陆路由
+app.post('/login', require('./routers/login'))
+
 //用户中心
 app.get('/usercenter', require('./routers/usercenter'))
