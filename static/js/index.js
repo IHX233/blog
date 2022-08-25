@@ -134,18 +134,3 @@
     });
 })();
 
-//右上角菜单
-(function() {
-    let menuSwitch = document.querySelector("#menu .menu-switch"),
-        menu = document.getElementById("menu");
-    menuSwitch.addEventListener("click", function() {
-        menu.classList.toggle("show");
-    })
-})();
-
-//登陆注册框
-$(function() {
-    $("#usercenter").on('click', () => {
-        $('#menu .menu-sign').fadeIn(200)
-    })
-})
