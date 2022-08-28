@@ -29,6 +29,7 @@ module.exports = function(req, res) {
                     //两次密码一致 添加到数据库
                     user.create(req.body)
                         .then(() => {
+                            req.session.ifLogin = true;
                             res.send({ code: 1, msg: "注册成功" });
                         })
                         .catch(() => {

@@ -186,7 +186,7 @@ body {
 
 #blogger .name {
     font-weight: bolder;
-    color: #000000;
+    color: #fff;
     text-align: center;
 }
 
@@ -386,38 +386,41 @@ body {
     height: 400px;
 }
 
+
 /* usercenter */
 
-#usercontent{
-    width:1000px;
-    height:600px;
+#usercontent {
+    width: 1000px;
+    height: 600px;
     background-color: rgba(255, 255, 255, .6);
-    position:fixed;
-    top:100px;
-    left:calc(50% - 500px)
-}
-#usercontent .right{
-    float:right;
-    position:relative;
-    height:60px;
-    width:170px;
-    line-height:60px;
+    position: fixed;
+    top: 100px;
+    left: calc(50% - 500px)
 }
 
-#usercontent .right i{
-    position:absolute;
-    top:10px;
-    height:40px;
-    width:40px;
+#usercontent .right {
+    float: right;
+    position: relative;
+    height: 60px;
+    width: 170px;
+    line-height: 60px;
+}
+
+#usercontent .right i {
+    position: absolute;
+    top: 10px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background: url("/images/bg/4.jpg") no-repeat center center/cover;
 }
 
-#usercontent .right a{
+#usercontent .right a {
     margin-left: 70px;
     font-size: 16px;
     color: #fff;
 }
-#usercontent .right a:hover{
-    color:aquamarine;
+
+#usercontent .right a:hover {
+    color: aquamarine;
 }

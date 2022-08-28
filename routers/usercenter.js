@@ -1,3 +1,7 @@
 module.exports = (req, res) => {
-    res.render('usercenter')
+    if (req.session.ifLogin) {
+        res.render('usercenter')
+    } else {
+        res.redirect("/")
+    }
 }
