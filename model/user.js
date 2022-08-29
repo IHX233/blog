@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 //引入node自带的加密模块
 const crypto = require("crypto");
+const { stringify } = require("querystring");
 
 //定义Schema
 let userSchema = new Schema({
@@ -15,6 +16,13 @@ let userSchema = new Schema({
         type: String,
         required: true,
         match: /^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i
+    },
+    sex: String,
+    tel: String,
+    email: String,
+    status: {
+        type: String,
+        default: '这个人很懒，什么都没留下！'
     }
 });
 

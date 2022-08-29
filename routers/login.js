@@ -24,6 +24,8 @@ module.exports = function(req, res) {
                 if (pwd === data.password) {
                     //设置session
                     req.session.ifLogin = true;
+                    //必须是req.session._id，不然会出错，相信我
+                    req.session._id = data._id;
                     res.send({ code: 0, msg: "登陆成功" })
                 } else {
                     res.send({ code: 2, msg: '密码错误' })

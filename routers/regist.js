@@ -28,8 +28,10 @@ module.exports = function(req, res) {
                 } else {
                     //两次密码一致 添加到数据库
                     user.create(req.body)
-                        .then(() => {
+                        .then((data) => {
                             req.session.ifLogin = true;
+                            console.log(data._id)
+                            req.session._id = data._id;
                             res.send({ code: 1, msg: "注册成功" });
                         })
                         .catch(() => {
