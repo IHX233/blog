@@ -160,7 +160,16 @@
                     data: data.field,
                     dataType: "json",
                     success: function(data) {
-                        if (data.code) {
+                        if (data.code === 4) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {
+                                    window.location.href = '/#reload'
+                                })
+                        } else if (data.code) {
                             layer.msg(
                                 data.msg, {
                                     icon: 5,
@@ -169,17 +178,15 @@
                                 function() {
 
                                 })
-                            window.location.href = "/usercenter"
+
                         } else {
-
-
                             layer.msg(
                                 data.msg, {
                                     icon: 1,
                                     time: 1500
                                 },
                                 function() {
-
+                                    window.location.reload()
                                 })
                         }
                     }

@@ -68,6 +68,19 @@ body {
     cursor: pointer;
 }
 
+.menu-sign .forgetPwd {
+    color: cadetblue
+}
+
+.menu-sign .forgetPwd:hover {
+    color: #f00;
+    text-decoration: underline;
+}
+
+.menu-sign #changeForm {
+    display: none
+}
+
 #menu .menu-switch {
     overflow: hidden;
     position: absolute;

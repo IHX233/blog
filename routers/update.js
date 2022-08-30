@@ -15,6 +15,8 @@ module.exports = (req, res) => {
             .catch(() => {
                 res.send({ code: 2, msg: "服务器异常，请稍后重试~" })
             })
+    } else {
+        res.send({ code: 4, msg: "登陆超时,请重新登陆" })
     }
 
 };

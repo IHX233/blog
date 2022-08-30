@@ -17,13 +17,35 @@ let userSchema = new Schema({
         required: true,
         match: /^[\da-z_,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i
     },
-    sex: String,
-    tel: String,
-    email: String,
+    sex: {
+        type: String,
+        enum: ['男', '女']
+    },
+    tel: {
+        type: String,
+        match: /^1[3-9]\d{9}$/
+    },
+    email: {
+        type: String,
+        match: /^\w{2,}@[\da-z]{2,}(\.[a-z]{2,6}){1,2}$/i
+    },
     status: {
         type: String,
         default: '这个人很懒，什么都没留下！'
+    },
+    scret: {
+        pq: {
+            type: String,
+            require: true,
+            enum: ['0', '1', '2']
+        },
+        pa: {
+            type: String,
+            require: true,
+            match: /./
+        }
     }
+
 });
 
 //密码加密 中间件
@@ -33,11 +55,13 @@ userSchema.pre("save", function(next) {
     //console.log(this.password);
     //this.password = "我的天啦！";
 
-    //使用node自带的加密模块，对传入的原始密码进行加密
+    //使用node自带的加密模块，对传入的原始密码和密保答案进行加密
     let newPwd = crypto.createHash('sha256').update(this.password).digest("hex");
+    let newPa = crypto.createHash('sha256').update(this.scret.pa).digest("hex");
     //console.log(newPwd);
     //替换将要保存的password字段
     this.password = newPwd;
+    this.scret.pa = newPa
 
     next();
 });

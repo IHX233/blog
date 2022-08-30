@@ -23,7 +23,7 @@
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
-                        <form class="layui-form" action="">
+                        <form class="layui-form" id="loginForm">
                             <div class="layui-form-item">
                                 <label class="layui-form-label">用户名</label>
                                 <div class="layui-input-inline">
@@ -36,11 +36,48 @@
                                 <div class="layui-input-inline">
                                     <input type="password" name="password" required lay-verify="pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
                                 </div>
-                                <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;" class="forgetPwd">忘记密码？</a></div>
                             </div>
+
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                        <form class="layui-form" id="changeForm">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="newPwd" name="password" required lay-verify="pwd" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">再次输入新密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="password1" required lay-verify="pwd2" placeholder="请再次输入新密码" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">请再次输入密码</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保问题</label>
+                                <div class="layui-input-inline" style="height:38px;line-height:38px">
+                                    你的密保问题是：
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保答案</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="pa" required placeholder="请输入密保答案" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux"><a href="javascript:;" class="forgetPwd">回到登陆</a></div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="regist">修改密码</button>
                                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                 </div>
                             </div>
@@ -65,9 +102,28 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">再次输入密码</label>
                                 <div class="layui-input-inline">
-                                    <input type="password" name="password1" required lay-verify="pwd2" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                                    <input type="password" name="password1" required lay-verify="pwd2" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
                                 </div>
-                                <div class="layui-form-mid layui-word-aux">请输入密码</div>
+                                <div class="layui-form-mid layui-word-aux">请再次输入密码</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保问题</label>
+                                <div class="layui-input-inline">
+                                    <select name="pq" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">你的生日？</option>
+                                    <option value="1">你的父亲？</option>
+                                    <option value="2">你的母亲？</option>
+                                  </select>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">请选择密保问题</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">密保答案</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="pa" required placeholder="请输入密保答案" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">请输入密保答案</div>
                             </div>
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
@@ -95,23 +151,44 @@
 
     //登陆注册框
     $(function() {
-        $("#usercenter").on('click', () => {
-            $.ajax({
-                method: 'POST',
-                url: '/usercenter',
-                dataType: 'json',
-                success: function(data) {
-                    if (data.code) {
-                        window.location.href = '/usercenter'
-                    } else {
-                        $('#menu .menu-sign').fadeIn(200)
+            $("#usercenter").on('click', () => {
+                $.ajax({
+                    method: 'POST',
+                    url: '/usercenter',
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.code) {
+                            window.location.href = '/usercenter'
+                        } else {
+                            $('#menu .menu-sign').fadeIn(200)
+                        }
                     }
-                }
-            })
+                })
 
+            })
+        })
+        // 忘记密码与登陆切换
+    $(function() {
+        $('.forgetPwd').on('click', function() {
+
+            var index = $(this).index("#menu .menu-sign .forgetPwd")
+            console.log(index)
+            if (index) {
+                $('#loginForm').show();
+                $('#changeForm').hide();
+            } else {
+                $('#loginForm').hide();
+                $('#changeForm').show();
+            }
         })
     })
-
+    $(function() {
+        var $menu = $("#menu "),
+            $menuSign = $menu.find(".menu-sign ")
+        if (location.hash === "#reload") {
+            $menuSign.fadeIn(100);
+        }
+    })
     $(function() {
         var $menu = $("#menu "),
             $menuSign = $menu.find(".menu-sign "),
@@ -121,6 +198,7 @@
         $close.on("click ", function() {
             $menuSign.fadeOut(100);
         });
+
     });
     //选项卡依赖element模块，否则无法进行功能性操作
     layui.use(['element', 'form'], function() {
