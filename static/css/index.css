@@ -81,6 +81,15 @@ body {
     display: none
 }
 
+.menu-sign .showQ {
+    color: cadetblue
+}
+
+.menu-sign .showQ:hover {
+    color: rgb(0, 0, 255);
+    text-decoration: underline;
+}
+
 #menu .menu-switch {
     overflow: hidden;
     position: absolute;

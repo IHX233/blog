@@ -53,3 +53,6 @@ app.get('/usercenter', require('./routers/usercenter'))
 app.post('/usercenter', require('./routers/postUsercenter'))
 app.get('/loginout', require('./routers/loginout'))
 app.post('/update', require('./routers/update'))
+
+//忘记密码
+app.use('/resetPwd', require('./routers/resetPwd'))
