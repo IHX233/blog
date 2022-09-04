@@ -130,7 +130,6 @@
         document.title = title;
     });
     window.addEventListener("blur", () => {
-        document.title = "快回来！出bug啦！！";
+        document.title = "快回来！汉堡被偷吃了！！";
     });
 })();
-

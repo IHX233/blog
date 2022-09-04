@@ -113,19 +113,48 @@
 
                                 <div class="layui-form-item">
                                     <div class="layui-input-block">
-                                        <button class="layui-btn" lay-submit lay-filter="ihx">立即提交</button>
+                                        <button class="layui-btn" lay-submit lay-filter="resetInfo">立即提交</button>
                                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="layui-tab-item">
-                            修改密码
+                            <form class="layui-form" action="">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">旧密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" id="pwd" name="password" required lay-verify="pwd" placeholder="请输入旧密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请输入旧密码</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">输入新密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="newPwd" required lay-verify="newPwd1" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">6-18位</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">再次输入新密码</label>
+                                    <div class="layui-input-inline">
+                                        <input type="password" name="newPwd1" required lay-verify="newPwd2" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-form-mid layui-word-aux">请再次输入新密码</div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn" lay-submit lay-filter="resetPwd">确认修改</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div class="layui-tab-item">
                             上传头像
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -153,7 +182,8 @@
                 }
 
             });
-            form.on('submit(ihx)', function(data) {
+            //监听信息修改提交
+            form.on('submit(resetInfo)', function(data) {
                 $.ajax({
                     method: "post",
                     url: "/update",
@@ -193,12 +223,53 @@
                 });
                 return false;
             });
+
+            //监听修改密码提交
+            form.on('submit(resetPwd)', function(data) {
+                $.ajax({
+                    method: "post",
+                    url: "/resetPwd/reset",
+                    data: data.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code === 4) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {
+                                    window.location.href = '/#reload'
+                                })
+                        } else if (data.code) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {
+
+                                })
+
+                        } else {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 1,
+                                    time: 1500
+                                },
+                                function() {
+                                    window.location.href = '/#reload'
+                                })
+                        }
+                    }
+                });
+                return false;
+            });
         });
 
         ! function f() {
             var $content1Btn = $("#usercontent .content1 tr td .layui-btn");
             $content1Btn.click(function() {
-                console.log(1)
                 var $ele = $(this).parent().prev().children();
                 $ele.toggle();
             });
