@@ -13,7 +13,7 @@
                     <li class="layui-nav-item"><a href="/">返回首页</a></li>
                     <li class="layui-nav-item layui-this"><a href="javascript:;">个人中心</a></li>
                     <li class="right">
-                        <i></i>
+                        <i style="background-image: url(/images/avatar/<%=data.photo%>);"></i>
                         <a href="/loginout">退出登陆</a>
                     </li>
 
@@ -151,7 +151,9 @@
                             </form>
                         </div>
                         <div class="layui-tab-item">
-                            上传头像
+                            <button type="button" class="layui-btn" id="avatar">
+                                <i class="layui-icon">&#xe67c;</i>上传头像
+                            </button>
                         </div>
                     </div>
 
@@ -164,9 +166,10 @@
     </body>
     <script>
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use(['element', 'form'], function() {
+        layui.use(['element', 'form', 'upload'], function() {
             var element = layui.element;
             var form = layui.form;
+            var upload = layui.upload;
             form.verify({
                 "tel": function(value) {
                     //有内容且不通过验证警告，所以允许了设空值
@@ -264,6 +267,40 @@
                     }
                 });
                 return false;
+            });
+
+            var uploadInst = upload.render({
+                elem: '#avatar' //绑定元素
+                    ,
+                url: '/upload/photo' //上传接口
+                    ,
+                done: function(data) {
+                    //上传完毕回调
+                    if (data.code == 4) {
+                        layer.msg(
+                            data.msg, {
+                                icon: 5,
+                                time: 1500
+                            },
+                            function() {
+                                window.location.href = "/#reload"
+                            }
+                        )
+                    } else {
+                        layer.msg(
+                            data.msg, {
+                                icom: 1,
+                                time: 1500
+                            },
+                            function() {
+                                window.location.reload()
+                            }
+                        )
+                    }
+                },
+                error: function() {
+                    //请求异常回调
+                }
             });
         });
 

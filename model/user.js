@@ -44,6 +44,10 @@ let userSchema = new Schema({
             require: true,
             match: /./
         }
+    },
+    photo: {
+        type: String,
+        default: 'default.jpg'
     }
 
 });

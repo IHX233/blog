@@ -56,3 +56,6 @@ app.post('/update', require('./routers/update'))
 
 //忘记密码
 app.use('/resetPwd', require('./routers/resetPwd'))
+
+//上传头像
+app.use('/upload', require('./routers/upload'))
