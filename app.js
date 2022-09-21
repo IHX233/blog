@@ -59,3 +59,6 @@ app.use('/resetPwd', require('./routers/resetPwd'))
 
 //上传头像
 app.use('/upload', require('./routers/upload'))
+
+//文章访问
+app.get('/article/:id', require('./routers/article'))

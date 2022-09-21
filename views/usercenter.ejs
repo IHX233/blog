@@ -384,7 +384,6 @@
 
             //上传文章
             form.on('submit(article)', function(data) {
-                alert(1)
                 $.ajax({
                     method: "POST",
                     url: "/upload/article",
@@ -394,7 +393,6 @@
                     },
                     dataType: "json",
                     success: function(data) {
-                        alert(1)
                         if (data.code === 4) {
                             layer.msg(
                                 data.msg, {
@@ -418,11 +416,10 @@
                                     icon: 1,
                                     time: 1500
                                 },
-                                function() {})
+                                function() {
+                                    window.location.href = "/article/" + data.id
+                                })
                         }
-                    },
-                    error: function(e) {
-                        alert('err')
                     }
                 });
                 return false;

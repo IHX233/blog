@@ -142,7 +142,6 @@ const article = require('../model/article')
 
 
 router.post('/article', (req, res) => {
-    console.log(1)
     let reqData = req.body
     if (req.session.ifLogin) {
         article.create({
