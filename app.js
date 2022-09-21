@@ -6,8 +6,8 @@ const mongoSession = require('connect-mongo')(session)
 
 //创建app
 let app = express()
-app.listen('2333', () => {
-    console.log('启动2333端口成功')
+app.listen('3333', () => {
+    console.log('启动3333端口成功')
 })
 
 //连接服务器

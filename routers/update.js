@@ -9,7 +9,7 @@ module.exports = (req, res) => {
         };
         reqData.sex && (newData.sex = reqData.sex);
         //直接更新数据 
-        user.updateOne({ id: req.session._id }, newData).then((data) => {
+        user.updateOne({ _id: req.session._id }, newData).then((data) => {
                 res.send({ code: 0, msg: '修改成功' })
             })
             .catch(() => {

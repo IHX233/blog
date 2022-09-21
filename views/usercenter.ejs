@@ -23,6 +23,10 @@
                         <li class="layui-this">个人信息</li>
                         <li>修改密码</li>
                         <li>上传头像</li>
+                        <%if(data.name === "admin"){%>
+                            <li>发表文章</li>
+                            <li>管理文章</li>
+                            <%}%>
                     </ul>
                     <div class="layui-tab-content">
                         <div class="layui-tab-item layui-show content1">
@@ -66,7 +70,7 @@
                                                 <div class="second" style="display:none">
                                                     <div class="layui-input-inline">
                                                         <input type="radio" name="sex" value="男" title="男">
-                                                        <input type="radio" name="sex" value="女" title="女" checked>
+                                                        <input type="radio" name="sex" value="女" title="女">
                                                     </div>
                                                 </div>
                                             </td>
@@ -119,7 +123,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="layui-tab-item">
+                        <div class="layui-tab-item content2">
                             <form class="layui-form" action="">
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">旧密码</label>
@@ -131,7 +135,7 @@
                                 <div class="layui-form-item">
                                     <label class="layui-form-label">输入新密码</label>
                                     <div class="layui-input-inline">
-                                        <input type="password" name="newPwd" required lay-verify="newPwd1" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+                                        <input type="password" id="newPwd" name="newPwd" required lay-verify="newPwd1" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
                                     </div>
                                     <div class="layui-form-mid layui-word-aux">6-18位</div>
                                 </div>
@@ -150,11 +154,44 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="layui-tab-item">
+                        <div class="layui-tab-item content3">
                             <button type="button" class="layui-btn" id="avatar">
                                 <i class="layui-icon">&#xe67c;</i>上传头像
                             </button>
+                            <span class="avatarInfo">大小不超过500k</span>
                         </div>
+                        <%if(data.name === "admin"){%>
+                            <div class="layui-tab-item content4">
+                                <form class="layui-form" action="">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">文章标题</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="title" lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">内容</label>
+                                        <style>
+                                            .editlabel {
+                                                float: left;
+                                                background-color: #fff;
+                                                width: 760px;
+                                            }
+                                        </style>
+                                        <div class="editlabel">
+
+                                            <textarea id="edit" style="display: none;"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <button class="layui-btn" lay-submit lay-filter="article">发表</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="layui-tab-item content5">管理文章</div>
+                            <%}%>
                     </div>
 
                 </div>
@@ -166,7 +203,8 @@
     </body>
     <script>
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use(['element', 'form', 'upload'], function() {
+        layui.use(['element', 'form', 'upload', 'layedit'], function() {
+            var gf = gf || {}
             var element = layui.element;
             var form = layui.form;
             var upload = layui.upload;
@@ -181,6 +219,25 @@
                 "email": function(value) {
                     if (value && !/^\w{2,}@[\da-z]{2,}(\.[a-z]{2,6}){1,2}$/i.test(value)) {
                         return "邮箱格式不正确!";
+                    }
+                },
+
+                "pwd": function(value) {
+                    if (!/^[\da-z,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value)) {
+                        return "密码格式不正确";
+                    }
+                },
+
+                "newPwd1": function(value) {
+                    if (!/^[\da-z,!@#\$%\^&*()+\[\]{}\-=\.<>?]{6,18}$/i.test(value)) {
+                        return "新密码格式不正确";
+                    }
+                },
+
+                "newPwd2": function(value) {
+                    var pwdvalue = $("#newPwd").val();
+                    if (value !== pwdvalue) {
+                        return "两次输入密码不一致"
                     }
                 }
 
@@ -269,6 +326,7 @@
                 return false;
             });
 
+            //上传头像
             var uploadInst = upload.render({
                 elem: '#avatar' //绑定元素
                     ,
@@ -286,10 +344,18 @@
                                 window.location.href = "/#reload"
                             }
                         )
+                    } else if (data.code) {
+                        layer.msg(
+                            data.msg, {
+                                icon: 5,
+                                time: 1500
+                            },
+                            function() {}
+                        )
                     } else {
                         layer.msg(
                             data.msg, {
-                                icom: 1,
+                                icon: 1,
                                 time: 1500
                             },
                             function() {
@@ -302,8 +368,70 @@
                     //请求异常回调
                 }
             });
+
+            //富文本编辑器
+            layui.use('layedit', function() {
+                gf.layedit = layui.layedit;
+                //图片上传接口
+                gf.layedit.set({
+                    uploadImage: {
+                        url: '/upload/img',
+                        type: 'POST'
+                    }
+                })
+                gf.editIndex = gf.layedit.build('edit'); //建立编辑器
+            });
+
+            //上传文章
+            form.on('submit(article)', function(data) {
+                alert(1)
+                $.ajax({
+                    method: "POST",
+                    url: "/upload/article",
+                    data: {
+                        title: data.field.title,
+                        content: gf.layedit.getContent(gf.editIndex)
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        alert(1)
+                        if (data.code === 4) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {})
+                        } else if (data.code) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {
+
+                                })
+
+                        } else {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 1,
+                                    time: 1500
+                                },
+                                function() {})
+                        }
+                    },
+                    error: function(e) {
+                        alert('err')
+                    }
+                });
+                return false;
+            });
         });
 
+
+
+        //忘记密码回到登陆
         ! function f() {
             var $content1Btn = $("#usercontent .content1 tr td .layui-btn");
             $content1Btn.click(function() {
@@ -311,6 +439,15 @@
                 $ele.toggle();
             });
         }();
+
+        //防止文章编辑中session过期
+        (function() {
+            setInterval(function() {
+                $.ajax({
+                    url: '/'
+                })
+            }, 10 * 60 * 1000 - 24)
+        })()
     </script>
 
 </html>

@@ -446,3 +446,7 @@ body {
 #usercontent .right a:hover {
     color: aquamarine;
 }
+
+#usercontent .avatarInfo {
+    color: #767676;
+}
