@@ -62,3 +62,9 @@ app.use('/upload', require('./routers/upload'))
 
 //文章访问
 app.get('/article/:id', require('./routers/article'))
+
+//文章管理查询
+app.post('/search', require('./routers/search'))
+
+//删除文章
+app.post('/delete', require('./routers/delete'))

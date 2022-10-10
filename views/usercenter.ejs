@@ -190,7 +190,36 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="layui-tab-item content5">管理文章</div>
+                            <div class="layui-tab-item content5">
+                                <form class="layui-form" action="">
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="srh" required placeholder="请输入文章关键词" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-inline">
+                                            <button class="layui-btn" lay-submit lay-filter="search">查询</button>
+                                        </div>
+                                    </div>
+                                    <table class="layui-table">
+                                        <colgroup>
+                                            <col width="150">
+                                            <col width="200">
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th>文章名</th>
+                                                <th>删除</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
                             <%}%>
                     </div>
 
@@ -424,6 +453,81 @@
                 });
                 return false;
             });
+
+            //监听查询
+            form.on('submit(search)', function(data) {
+                $.ajax({
+                    method: "POST",
+                    url: "/search",
+                    data: data.field,
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.code === 4) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {})
+                        } else if (data.code) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {
+
+                                })
+
+                        } else {
+                            searchTable(data)
+                        }
+                    }
+                });
+                return false;
+            });
+            var $tbody = $(".content5 tbody")
+            $tbody.on("click", ".del-btn", function() {
+                var _id = $(this).attr("data-id")
+                var _this = $(this)
+                $.ajax({
+                    method: "Post",
+                    url: "/delete",
+                    data: {
+                        _id
+                    },
+                    success: function(data) {
+                        if (data.code) {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 5,
+                                    time: 1500
+                                },
+                                function() {}
+                            )
+                        } else {
+                            layer.msg(
+                                data.msg, {
+                                    icon: 1,
+                                    time: 1500
+                                },
+                                function() {
+                                    _this.parent().parent().remove()
+                                }
+                            )
+                        }
+                    }
+                })
+            })
+
+            function searchTable(data) {
+                var html = ""
+                data.forEach((item, index) => {
+                    html += `<tr><td>${item.title}</td><td><button type="button" class="layui-btn del-btn" data-id="${item._id}">删除</button></td></tr>`
+                })
+                $tbody.html(html)
+            }
+
         });
 
 
